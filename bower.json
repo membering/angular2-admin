@@ -1,0 +1,19 @@
+{
+  "name": "angular2-webpack",
+  "version": "1.0.0",
+  "description": "A webpack starter for Angular",
+  "license": "MIT",
+  "authors": [
+    "Thien Nguyen <thien.nguyen@seldatinc.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "SpinKit": "^1.2.5",
+    "Ionicons": "ionicons#^2.0.1"
+  }
+}
