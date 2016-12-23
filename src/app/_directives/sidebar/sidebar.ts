@@ -7,13 +7,14 @@ import {JwtHelper} from 'angular2-jwt';
 })
 
 export class SidebarDirective {
-	// jwtHelper: JwtHelper = new JwtHelper();
-	// profile: any = {};
+	jwtHelper: JwtHelper = new JwtHelper();
+	profile: any = {};
 
 	constructor() {
-		// this.profile = this.jwtHelper.decodeToken(localStorage.getItem('id_token'));
-		// if (this.profile.avatar != null && this.profile.avatar.indexOf('http') < 0) {
-		// 	this.profile.avatar = 'http://static2.fastcard.vn/account/' + this.profile.avatar;
-		// }
+		this.profile = this.jwtHelper.decodeToken(localStorage.getItem('id_token'));
+		console.log(this.profile);
+		if (this.profile.avatar != null && this.profile.avatar.indexOf('http') < 0) {
+			this.profile.avatar = 'http://static2.fastcard.vn/account/' + this.profile.avatar;
+		}
 	}
 }

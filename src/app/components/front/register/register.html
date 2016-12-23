@@ -1,0 +1,57 @@
+<div class="login-box">
+    <div class="login-logo">
+        <a [routerLink]="['']"><img src="/assets/img/Icon-Small-60.png"> <b>Fast</b>Card</a>
+    </div>
+    <div class="login-box-body">
+        <p class="login-box-msg">Register a new membership</p>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+            <div class="form-group has-feedback" [ngClass]="{'has-error': submitted && form.controls.name.errors}">
+                <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="help-block" *ngIf="submitted && form.controls.name.hasError('required')">
+                    Name is required
+                </span>
+            </div>
+            <div class="form-group has-feedback" [ngClass]="{'has-error': submitted && form.controls.email.errors}">
+                <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="help-block" *ngIf="submitted && form.controls.email.hasError('required')">
+                    Email is required
+                </span>
+                <span class="help-block" *ngIf="submitted && form.controls.email.hasError('pattern')">
+                    Email is not valid
+                </span>
+            </div>
+            <div class="form-group has-feedback" [ngClass]="{'has-error': submitted && form.controls.pwd.errors}">
+                <input type="password" class="form-control" formControlName="pwd" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="help-block" *ngIf="submitted && form.controls.pwd.hasError('required')">
+                    Password is required
+                </span>
+            </div>
+            <div class="form-group has-feedback" [ngClass]="{'has-error': submitted && form.controls.phone.errors}">
+                <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="help-block" *ngIf="submitted && form.controls.phone.hasError('required')">
+                    Name is required
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> I agree to the <a [routerLink]="['']">terms</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="loading">
+                        Register <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <a [routerLink]="['/login']" class="text-center">I already have a membership</a>
+    </div>
+</div>

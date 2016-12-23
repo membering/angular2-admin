@@ -4,8 +4,10 @@ import {AuthGuard} from '../../_guards/index';
 import {HomeComponent} from './index';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ProfileComponent} from './profile/profile.component';
+import {cardRoutes} from './card/index';
+import {contactRoutes} from './contact/index';
 
-export const HomeRoutes: Routes = [
+export const homeRoutes: Routes = [
     {
         path: '',
         component: HomeComponent,
@@ -13,7 +15,9 @@ export const HomeRoutes: Routes = [
             {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
             {path: 'dashboard', component: DashboardComponent, data: {name: 'Dashboard'}},
             {path: 'profile', component: ProfileComponent, data: {name: 'Profile'}},
+            ...cardRoutes,
+            ...contactRoutes
         ],
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
     }
 ];

@@ -1,14 +1,24 @@
-import {ModuleWithProviders} from '@angular/core';
-import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import {HomeRoutes} from './components/home/index';
-import {LoginComponent} from './components/front/index';
+import {homeRoutes} from './components/home/index';
+import {LoginComponent, RegisterComponent} from './components/front/index';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
-    ...HomeRoutes,
+    {path: 'register', component: RegisterComponent},
+    ...homeRoutes,
 
     {path: '**', redirectTo: ''}
 ];
 
-export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(appRoutes, {useHash: true, preloadingStrategy: PreloadAllModules});
+
+@NgModule({
+    imports: [
+        RouterModule.forRoot(appRoutes, {useHash: true})
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class AppRoutingModule {}

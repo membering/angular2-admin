@@ -64,6 +64,17 @@
     }
     .help-block {
       color: @red;
+      display: none;
+      position: absolute;
+      margin: 0;
+      bottom: 7px;
+      right: 30px;
+      white-space: nowrap;
+    }
+    &:active, &:hover, &:focus {
+      .help-block {
+        display: block !important;
+      }
     }
   }
 }

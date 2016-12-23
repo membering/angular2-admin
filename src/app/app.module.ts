@@ -2,22 +2,21 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {AUTH_PROVIDERS} from 'angular2-jwt';
 
-import {AppRoutes} from './app.routes';
-import {AppComponent} from './app.component';
-
-import {AuthGuard} from './_guards/index';
-
+import {AppRoutingModule} from './app.routes';
 import {HomeModule} from './components/home/home.module';
+
+import {AppComponent} from './app.component';
 import {LoginComponent, RegisterComponent} from './components/front/index';
+
+import {AlertService} from './services/index';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule, ReactiveFormsModule,
         HttpModule,
-        AppRoutes,
+        AppRoutingModule,
         HomeModule
     ],
     declarations: [
@@ -25,8 +24,7 @@ import {LoginComponent, RegisterComponent} from './components/front/index';
         LoginComponent, RegisterComponent
     ],
     providers: [
-        AUTH_PROVIDERS,
-        AuthGuard
+        AlertService
     ],
     bootstrap: [AppComponent]
 })

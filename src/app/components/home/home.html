@@ -7,20 +7,21 @@
         <div class="sk-rect sk-rect5"></div>
     </div>
 </div>
-<div class="skin-blue sidebar-mini">
-    <div class="wrapper">
-        <sidebar></sidebar>
-        <div class="content-wrapper" style="min-height: 916px;">
-            <section class="content-header">
-                <breadcrumb></breadcrumb>
-                <!--<ol class="breadcrumb">-->
-                    <!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>-->
-                    <!--<li class="active">Dashboard</li>-->
-                <!--</ol>-->
-            </section>
-            <section class="content">
-                <router-outlet></router-outlet>
-            </section>
-        </div>
+<div class="wrapper">
+    <sidebar></sidebar>
+    <div class="content-wrapper" style="min-height: 916px;">
+        <section class="content-header">
+            <breadcrumb></breadcrumb>
+        </section>
+        <section class="content">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{title}}</h3>
+                </div>
+                <div class="box-body">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
