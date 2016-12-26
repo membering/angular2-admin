@@ -23,6 +23,7 @@ export class DetailComponent implements OnInit {
     ) {
         this.title = route.snapshot.data['name'];
         route.params.subscribe(params => this.params = params);
+        this.data.photo = '/assets/img/default_avatar.png';
     }
 
     ngOnInit() {

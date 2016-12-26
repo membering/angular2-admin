@@ -12,7 +12,6 @@ export class SidebarDirective {
 
 	constructor() {
 		this.profile = this.jwtHelper.decodeToken(localStorage.getItem('id_token'));
-		console.log(this.profile);
 		if (this.profile.avatar != null && this.profile.avatar.indexOf('http') < 0) {
 			this.profile.avatar = 'http://static2.fastcard.vn/account/' + this.profile.avatar;
 		}

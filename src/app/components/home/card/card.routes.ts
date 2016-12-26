@@ -11,7 +11,7 @@ export const cardRoutes: Routes = [
         data: { name: 'Card' },
         children: [
             { path: '', redirectTo: 'list', pathMatch: 'full' },
-            { path: 'list', component: ListComponent, data: { name: 'Card List' } },
+            { path: 'list/all', component: ListComponent, data: { name: 'Card List' } },
             { path: 'list/published', component: PublishedComponent, data: { name: 'Card Published' } },
             { path: 'list/received', component: ReceivedComponent, data: { name: 'Card Received' } },
             { path: 'detail/:id', component: DetailComponent, data: { name: 'Card Detail' } },

@@ -3,11 +3,11 @@
     <div class="clearfix"></div>
 </div>
 <div class="x_content">
-    <form class="form-horizontal" (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-2 col-xs-12 text-center">
                 <label for="photo">
-                    <img [src]="model.photo" class="img-circle profile_img large" style="cursor:pointer;" />
+                    <img [src]="model.photo" class="img-circle img-contact" style="cursor:pointer;" />
                     <input type="file" id="photo" class="form-control"
                            (change)="fileChange($event)"
                            placeholder="Photo" style="visibility:hidden" />

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {PaginationModule} from 'ng2-bootstrap/pagination';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { MomentModule } from 'angular2-moment';
 
@@ -17,6 +18,7 @@ import { CardService } from '../../../services/index';
         BrowserModule,
         FormsModule, ReactiveFormsModule,
         RouterModule,
+        PaginationModule.forRoot(),
         Ng2PaginationModule,
         MomentModule
     ],

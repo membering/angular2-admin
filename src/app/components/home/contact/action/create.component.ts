@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.model.photo = '/assets/images/default_avatar.png';
+        this.model.photo = '/assets/img/default_avatar.png';
     }
 
     fileChange(event: any) {

@@ -22,25 +22,36 @@
         </div>
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview" [routerLinkActive]="['active']"><a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="treeview" [routerLinkActive]="['active']">
+                <a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+            </li>
             <li class="treeview" [routerLinkActive]="['active']">
                 <a href="#">
-                    <i class="fa fa-credit-card"></i> <span>Thẻ</span>
+                    <i class="fa fa-credit-card"></i><span>Thẻ</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li [routerLinkActive]="['active']"><a [routerLink]="['/card/generate']"><i class="fa fa-circle-o"></i> Tạo mới</a></li>
+                    <li [routerLinkActive]="['active']">
+                        <a [routerLink]="['/card/generate']"><i class="fa fa-circle-o"></i>Tạo mới</a>
+                    </li>
                     <li [routerLinkActive]="['active']">
                         <a href="#">
-                            <i class="fa fa-circle-o"></i> Danh sách
+                            <i class="fa fa-circle-o"></i><span>Danh sách</span>
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
-                            <li [routerLinkActive]="['active']"><a [routerLink]="['/card/list']"><i class="fa fa-circle-o"></i> Tất cả</a></li>
-                            <li [routerLinkActive]="['active']"><a [routerLink]="['/card/list/published']"><i class="fa fa-circle-o"></i> Đã phát hành</a></li>
+                            <li [routerLinkActive]="['active']">
+                                <a [routerLink]="['/card/list/all']"><i class="fa fa-circle-o"></i>Tất cả</a>
+                            </li>
+                            <li [routerLinkActive]="['active']">
+                                <a [routerLink]="['/card/list/published']"><i class="fa fa-circle-o"></i>Đã phát hành</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
+            </li>
+            <li class="treeview" [routerLinkActive]="['active']">
+                <a [routerLink]="['/contact']"><i class="fa fa-book"></i><span>Danh bạ</span></a>
             </li>
         </ul>
     </section>
