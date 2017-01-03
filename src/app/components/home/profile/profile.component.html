@@ -1,1 +1,93 @@
-test
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <h4 class="title">Thông tin doanh nghiệp</h4>
+            <div class="form-group">
+                <label>Tên DN</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Tên DN" />
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" class="form-control" formControlName="phone" placeholder="Phone" />
+            </div>
+            <div class="form-group">
+                <label>Web</label>
+                <input type="text" class="form-control" formControlName="web" placeholder="Web" />
+            </div>
+            <div class="form-group">
+                <label>Giờ mở cửa</label>
+                <input type="text" class="form-control" formControlName="openingtime" placeholder="Giờ mở cửa" />
+            </div>
+            <div class="form-group">
+                <label>Giới thiệu dịch vụ</label>
+                <textarea class="form-control" formControlName="bio" placeholder="Giới thiệu dịch vụ"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Lĩnh vực</label>
+                <select class="form-control" formControlName="field">
+                    <option *ngFor="let i of categories" [value]="i.code">{{i.label}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-xs-12">
+                    <label>Logo</label>
+                    <label for="logo">
+                        <img [src]="data.supp_avatar" style="cursor: pointer;max-width: 100%;height: auto;">
+                        <input type="file" id="logo" class="form-control" (change)="fileChange($event, 'avatar')" style="visibility:hidden" />
+                    </label>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <label>Images</label>
+                    <div class="row">
+                        <div class="col-md-3" *ngFor="let v of data.images;let i=index;">
+                            <img [src]="v" style="max-width: 100%;height: auto;">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="images" class="text-center" style="cursor: pointer;">
+                                + add more
+                                <input type="file" id="images" class="form-control" (change)="fileChange($event, 'images')" multiple style="visibility:hidden" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <h4 class="title">Địa chỉ<span (click)="addAddress()" style="float: right;cursor: pointer;"><i class="fa fa-plus"></i></span></h4>
+            <div formArrayName="address">
+                <div class="panel panel-default" *ngFor="let v of form.controls.address.value;let i=index;" [formGroupName]="i">
+                    <div class="panel-heading">#{{i + 1}}<span (click)="removeAddress(i)" style="float: right;cursor: pointer;"><i class="fa fa-times"></i></span></div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-12 col-xs-12">
+                                <label>Địa chỉ</label>
+                                <input type="text" class="form-control" formControlName="address" placeholder="Địa chỉ" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-xs-12">
+                                <label>Thành Phố</label>
+                                <select class="form-control" formControlName="city_id">
+                                    <option [value]="">-- Chọn thành phố --</option>
+                                    <option *ngFor="let i of cities" [value]="i.code">{{i.label}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <label>Quận</label>
+                                <select class="form-control" formControlName="district_id">
+                                    <option [value]="">-- Chọn quận --</option>
+                                    <option *ngFor="let i of districts" [value]="i.code">{{i.label}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>

@@ -7,6 +7,20 @@
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img [src]="profile.avatar" class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{profile.name}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/profile']">Profile</a></li>
+                        <li><a [routerLink]="['/login']">Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 <aside class="main-sidebar">
@@ -24,34 +38,6 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview" [routerLinkActive]="['active']">
                 <a [routerLink]="['/dashboard']"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
-            </li>
-            <li class="treeview" [routerLinkActive]="['active']">
-                <a href="#">
-                    <i class="fa fa-credit-card"></i><span>Thẻ</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li [routerLinkActive]="['active']">
-                        <a [routerLink]="['/card/generate']"><i class="fa fa-circle-o"></i>Tạo mới</a>
-                    </li>
-                    <li [routerLinkActive]="['active']">
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i><span>Danh sách</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li [routerLinkActive]="['active']">
-                                <a [routerLink]="['/card/list/all']"><i class="fa fa-circle-o"></i>Tất cả</a>
-                            </li>
-                            <li [routerLinkActive]="['active']">
-                                <a [routerLink]="['/card/list/published']"><i class="fa fa-circle-o"></i>Đã phát hành</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview" [routerLinkActive]="['active']">
-                <a [routerLink]="['/contact']"><i class="fa fa-book"></i><span>Danh bạ</span></a>
             </li>
         </ul>
     </section>

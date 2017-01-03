@@ -34,7 +34,7 @@ export class BreadcrumbDirective implements OnInit {
             this.breadcrumbs.push({
                 name: node.data['name'],
                 url: '/' + url
-            })
+            });
         }
         if (node.firstChild) {
             this.parseRoute(node.firstChild);

@@ -1,3 +1,2 @@
-export * from './alert.service';
-export * from './card.service';
-export * from './contact.service';
+export * from './common.service';
+export * from './profile.service';

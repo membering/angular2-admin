@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {homeRoutes} from './components/home/index';
+import {Page404Component} from './components/front/pages/index';
 import {LoginComponent, RegisterComponent} from './components/front/index';
 
 const appRoutes: Routes = [
@@ -9,7 +10,7 @@ const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent},
     ...homeRoutes,
 
-    {path: '**', redirectTo: ''}
+    {path: '**', component: Page404Component}
 ];
 
 

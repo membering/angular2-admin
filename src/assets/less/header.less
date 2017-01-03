@@ -163,6 +163,7 @@
   //position: absolute;
   top: 15px;
   right: 10px;
+  background: @gray;
   .border-radius(2px);
   > li > a {
     color: #444;
@@ -173,6 +174,7 @@
     }
   }
   > li + li:before {
+    color: #444;
     content: '>\00a0';
   }
 }
@@ -184,7 +186,6 @@
     top: 0;
     right: 0;
     float: none;
-    background: @gray;
     padding-left: 10px;
     li:before {
       color: darken(@gray, 20%);

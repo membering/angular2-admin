@@ -2,32 +2,35 @@
   "name": "angular2-webpack",
   "version": "1.0.0",
   "description": "A webpack starter for Angular",
+  "license": "MIT",
+  "authors": [
+    "Thien Nguyen <thien.nguyen@seldatinc.com>"
+  ],
   "scripts": {
-    "start": "webpack-dev-server --inline --progress",
+    "start": "webpack-dev-server --inline --progress --port 8080",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
-  "license": "MIT",
   "dependencies": {
-    "@angular/common": "~2.3.0",
-    "@angular/compiler": "~2.3.0",
-    "@angular/core": "~2.3.0",
-    "@angular/forms": "~2.3.0",
-    "@angular/http": "~2.3.0",
-    "@angular/platform-browser": "~2.3.0",
-    "@angular/platform-browser-dynamic": "~2.3.0",
-    "@angular/router": "~3.3.0",
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/forms": "~2.4.0",
+    "@angular/http": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/router": "~3.4.0",
     "angular2-jwt": "^0.1.27",
     "angular2-moment": "^1.0.0",
     "bootstrap": "^3.3.7",
-    "bootstrap-notify": "^3.1.3",
     "core-js": "^2.4.1",
     "jquery": "^3.1.1",
     "jquery-datetimepicker": "^2.5.4",
     "ng2-bootstrap": "^1.1.16-9",
     "ng2-pagination": "^1.0.1",
-    "rxjs": "5.0.0-rc.4",
-    "zone.js": "^0.7.2"
+    "ng2-toasty": "^2.2.2",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.4"
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.38",
@@ -53,10 +56,13 @@
     "phantomjs-prebuilt": "^2.1.14",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.1.0",
-    "style-loader": "^0.13.1",
     "typescript": "^2.1.4",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/membering/angular2-admin.git"
   }
 }

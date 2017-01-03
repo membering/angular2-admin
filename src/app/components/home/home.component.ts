@@ -16,14 +16,16 @@ export class HomeComponent implements OnInit {
     constructor(
         private router: Router,
         private titleService: Title
-    ) {
-    }
+    ) {}
 
     ngOnInit() {
         this.currentTitle = this.titleService.getTitle();
-        this.router.events.subscribe(() => {
-            this.parseRoute(this.router.routerState.snapshot.root);
-        });
+        this.router.events
+            .subscribe(
+                () => {
+                    this.parseRoute(this.router.routerState.snapshot.root);
+                }
+            );
     }
 
     parseRoute(node: ActivatedRouteSnapshot) {

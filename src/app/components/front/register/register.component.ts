@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {Http, Response} from '@angular/http';
-import {Router} from "@angular/router";
-import {AlertService} from '../../../services/index';
-declare var $: any;
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {ToastyService} from 'ng2-toasty';
+declare const $: any;
 
 import '../../../../assets/js/plugins/iCheck/square/blue.css';
 import '../../../../assets/js/plugins/iCheck/icheck.js';
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     constructor(
         private http: Http,
         private router: Router,
-        private alertService: AlertService,
+        private toastyService: ToastyService,
     ) {
     }
 
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
         if (this.form.valid) {
             this.loading = true;
             this.http.post(process.env.apiUrl + '/account/register', this.form.value)
-                .map((response: Response) => response.json())
+                .map((res: Response) => res.json())
                 .subscribe(
                     res => {
                         this.loading = false;
@@ -60,12 +60,12 @@ export class RegisterComponent implements OnInit {
                             }
                         }
                         else {
-                            this.alertService.error(res.message);
+                            this.toastyService.error(res.message);
                         }
                     },
-                    error => {
+                    err => {
                         this.loading = false;
-                        console.log(error);
+                        console.log(err);
                     },
                 );
         }
