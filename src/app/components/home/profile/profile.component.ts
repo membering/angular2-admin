@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {ToastyService} from 'ng2-toasty';
 import {Util} from '../../../_libraries/util';
 import {CommonService, ProfileService} from '../../../services/index';
 
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
     constructor(
         private util: Util,
         private fb: FormBuilder,
+        private toastyService: ToastyService,
         private service: ProfileService,
         private commonService: CommonService
     ) {}
@@ -53,14 +55,16 @@ export class ProfileComponent implements OnInit {
             reader.readAsDataURL(event.target.files[0]);
         }
         if (target == 'images') {
+            let images: any = [];
             for (let i = 0; i < event.target.files.length; i++) {
                 let reader = new FileReader();
                 reader.onload = () => {
                     this.data.images.push(reader.result);
+                    images.push(reader.result);
                 };
                 reader.readAsDataURL(event.target.files[i]);
             }
-            this.form.addControl('images', new FormControl(this.data.images));
+            this.form.addControl('images', new FormControl(images));
         }
     }
 
@@ -134,7 +138,7 @@ export class ProfileComponent implements OnInit {
             }
             else if (key == 'images') {
                 this.form.value[key].forEach((v: any,i: any) => {
-                    formData.append('images['+i+']', this.util.dataURItoBlob(v));
+                    formData.append('images', this.util.dataURItoBlob(v));
                 })
             }
             else formData.append(key, this.form.value[key]);
@@ -142,12 +146,11 @@ export class ProfileComponent implements OnInit {
         this.service.editProfile(formData)
             .subscribe(
                 res => {
-                    console.log(res);
                     if (res.code === 200) {
-
+                        this.toastyService.success(res.message);
                     }
                     else {
-
+                        this.toastyService.error(res.message);
                     }
                 }
             );

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Response, RequestOptionsArgs} from '@angular/http';
 import {AuthHttp} from 'angular2-jwt';
-import {ToastyService} from 'ng2-toasty';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
 declare const $: any;
@@ -13,13 +12,12 @@ export class HttpClient {
 
     constructor(
         private http: AuthHttp,
-        private router: Router,
-        private toastyService: ToastyService
+        private router: Router
     ) {
         this.apiUrl = process.env.apiUrl;
     }
 
-    private extractData = (res: Response) => {
+    private extractData = (res: Response | any) => {
         $('.loader').removeClass('is-active');
         return res.json();
     };
@@ -27,9 +25,6 @@ export class HttpClient {
     private handleError = (err: Response | any) => {
         $('.loader').removeClass('is-active');
         if (err.status == 401) this.router.navigate(['/login']);
-        let errMsg;
-        if (err instanceof Response) {
-        }
         return Observable.throw(err);
     };
 

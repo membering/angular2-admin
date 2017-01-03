@@ -3,6 +3,7 @@ import {RouterModule} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
+import {ToastyModule} from 'ng2-toasty';
 
 import {AuthGuard} from '../../_guards/index';
 import {HttpClient, Util} from '../../_libraries/index';
@@ -16,7 +17,8 @@ import {ProfileComponent} from './profile/profile.component';
     imports: [
         RouterModule,
         BrowserModule,
-        FormsModule, ReactiveFormsModule
+        FormsModule, ReactiveFormsModule,
+        ToastyModule.forRoot()
     ],
     declarations: [
         SidebarDirective,
