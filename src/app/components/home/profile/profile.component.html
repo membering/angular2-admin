@@ -2,31 +2,50 @@
     <div class="row">
         <div class="col-md-6 col-xs-12">
             <h4 class="title">Thông tin doanh nghiệp</h4>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': submitted && form.controls.name.errors}">
                 <label>Tên DN</label>
                 <input type="text" class="form-control" formControlName="name" placeholder="Tên DN" />
+                <span class="help-block" *ngIf="submitted && form.controls.name.hasError('required')">
+                    Tên DN is required
+                </span>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': submitted && form.controls.phone.errors}">
                 <label>Phone</label>
                 <input type="text" class="form-control" formControlName="phone" placeholder="Phone" />
+                <span class="help-block" *ngIf="submitted && form.controls.phone.hasError('required')">
+                    Phone is required
+                </span>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': submitted && form.controls.web.errors}">
                 <label>Web</label>
                 <input type="text" class="form-control" formControlName="web" placeholder="Web" />
+                <span class="help-block" *ngIf="submitted && form.controls.web.hasError('required')">
+                    Web is required
+                </span>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': submitted && form.controls.openingtime.errors}">
                 <label>Giờ mở cửa</label>
                 <input type="text" class="form-control" formControlName="openingtime" placeholder="Giờ mở cửa" />
+                <span class="help-block" *ngIf="submitted && form.controls.openingtime.hasError('required')">
+                    Giờ mở cửa is required
+                </span>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': submitted && form.controls.bio.errors}">
                 <label>Giới thiệu dịch vụ</label>
                 <textarea class="form-control" formControlName="bio" placeholder="Giới thiệu dịch vụ"></textarea>
+                <span class="help-block" *ngIf="submitted && form.controls.bio.hasError('required')">
+                    Giới thiệu dịch vụ is required
+                </span>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': submitted && form.controls.field.errors}">
                 <label>Lĩnh vực</label>
                 <select class="form-control" formControlName="field">
+                    <option [value]="''">-- Chọn lĩnh vực --</option>
                     <option *ngFor="let i of categories" [value]="i.code">{{i.label}}</option>
                 </select>
+                <span class="help-block" *ngIf="submitted && form.controls.field.hasError('required')">
+                    Lĩnh vực is required
+                </span>
             </div>
             <div class="form-group">
                 <div class="col-md-3 col-xs-12">
@@ -39,12 +58,13 @@
                 <div class="col-md-9 col-xs-12">
                     <label>Images</label>
                     <div class="row">
-                        <div class="col-md-3" *ngFor="let v of data.images;let i=index;">
-                            <img [src]="v" style="max-width: 100%;height: auto;">
+                        <div class="col-md-3 col-xs-3" *ngFor="let v of data.images;let i=index;" style="padding: 1px;border: 1px solid #adadad;border-radius: 3px;">
+                            <i class="fa fa-times" (click)="removeImage(v.id, i)" style="position: absolute;left: 2px;top: 0;cursor: pointer;color: #fff;"></i>
+                            <img [src]="v.image" style="max-width: 100%;height: 100px;">
                         </div>
-                        <div class="col-md-3">
-                            <label for="images" class="text-center" style="cursor: pointer;">
-                                + add more
+                        <div class="col-md-3 col-xs-3" style="padding: 1px;">
+                            <label for="images" class="text-center" style="position: relative;width: 100%;height: 100px;">
+                                <span class="btn btn-default" style="cursor: pointer;position: absolute;top: calc(50% - 17px);left: calc(50% - 18px);"><i class="fa fa-plus"></i></span>
                                 <input type="file" id="images" class="form-control" (change)="fileChange($event, 'images')" multiple style="visibility:hidden" />
                             </label>
                         </div>
@@ -55,29 +75,40 @@
         <div class="col-md-6 col-xs-12">
             <h4 class="title">Địa chỉ<span (click)="addAddress()" style="float: right;cursor: pointer;"><i class="fa fa-plus"></i></span></h4>
             <div formArrayName="address">
-                <div class="panel panel-default" *ngFor="let v of form.controls.address.value;let i=index;" [formGroupName]="i">
+                <div class="panel panel-default" *ngFor="let v of form.controls.address.controls;let i=index;" [formGroupName]="i">
                     <div class="panel-heading">#{{i + 1}}<span (click)="removeAddress(i)" style="float: right;cursor: pointer;"><i class="fa fa-times"></i></span></div>
                     <div class="panel-body">
-                        <div class="form-group">
-                            <div class="col-md-12 col-xs-12">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group" [ngClass]="{'has-error': submitted && v.controls.address.errors}">
                                 <label>Địa chỉ</label>
                                 <input type="text" class="form-control" formControlName="address" placeholder="Địa chỉ" />
+                                <span class="help-block" *ngIf="submitted && v.controls.address.hasError('required')">
+                                    Địa chỉ is required
+                                </span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-xs-12">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group" [ngClass]="{'has-error': submitted && v.controls.city_id.errors}">
                                 <label>Thành Phố</label>
                                 <select class="form-control" formControlName="city_id">
-                                    <option [value]="">-- Chọn thành phố --</option>
+                                    <option [value]="''">-- Chọn thành phố --</option>
                                     <option *ngFor="let i of cities" [value]="i.code">{{i.label}}</option>
                                 </select>
+                                <span class="help-block" *ngIf="submitted && v.controls.city_id.hasError('required')">
+                                    Thành Phố is required
+                                </span>
                             </div>
-                            <div class="col-md-6 col-xs-12">
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group" [ngClass]="{'has-error': submitted && v.controls.district_id.errors}">
                                 <label>Quận</label>
                                 <select class="form-control" formControlName="district_id">
-                                    <option [value]="">-- Chọn quận --</option>
+                                    <option [value]="''">-- Chọn quận --</option>
                                     <option *ngFor="let i of districts" [value]="i.code">{{i.label}}</option>
                                 </select>
+                                <span class="help-block" *ngIf="submitted && v.controls.district_id.hasError('required')">
+                                    Quận is required
+                                </span>
                             </div>
                         </div>
                     </div>

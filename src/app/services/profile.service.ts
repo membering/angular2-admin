@@ -14,4 +14,8 @@ export class ProfileService {
     editProfile(params: any) {
         return this.http.post('/supplier/profile/save', params);
     }
+
+    removeImage(params: any) {
+        return this.http.post('/supplier/profile/image_delete', params);
+    }
 }
